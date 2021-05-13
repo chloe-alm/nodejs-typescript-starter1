@@ -22,6 +22,7 @@
   "homepage": "https://github.com/chloe-alm/nodejs-typescript-starter1#readme",
   "devDependencies": {
     "@types/node": "^15.0.3",
+    "dotenv": "^9.0.2",
     "nodemon": "^2.0.7",
     "typescript": "^4.2.4"
   },

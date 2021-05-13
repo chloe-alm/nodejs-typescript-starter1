@@ -1,1 +1,3 @@
-console.log("Hello world"); 
+import{ createServer } from './app/http/app'
+
+const app = createServer();
