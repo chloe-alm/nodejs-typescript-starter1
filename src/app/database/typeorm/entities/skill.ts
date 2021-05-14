@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { Category } from './category'
 
-@Entity()
-export class Skill {
+Entity()
+export class Skill extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

@@ -3,5 +3,5 @@ import { Skill } from './skill'
 import { Category } from './category'
 
 const entities = [User, Skill, Category]
-
-export { entities }
+const entitiesObject = { User, Skill, Category }
+export { entities, entitiesObject }
