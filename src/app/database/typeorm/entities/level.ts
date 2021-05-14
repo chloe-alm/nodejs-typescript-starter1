@@ -10,27 +10,22 @@ import {
   import { Progresse } from "./progresse";
   
   @Entity()
-  export class User extends BaseEntity {
+  export class Level extends BaseEntity {
     @PrimaryGeneratedColumn("uuid")
     id: number;
   
+    @Column({
+      type: "int",
+      width: 3,
+    })
+    number: number;
+  
     @Column("varchar", {
       length: 50,
     })
-    firstName: string;
+    name: string;
   
-    @Column("varchar", {
-      length: 50,
-    })
-    lastName: string;
-  
-    @Column({ unique: true, name: "email" })
-    email!: string;
-  
-    @Column()
-    password!: string;
-  
-    @OneToMany(() => Progresse, (progresse) => progresse.user)
+    @OneToMany(() => Progresse, (progresse) => progresse.level)
     progresses: Progresse[];
   
     @CreateDateColumn()

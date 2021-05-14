@@ -1,15 +1,19 @@
 //UseCase -> Service -> de la logique
 import { CategoryRepo } from "../../categoryRepo";
-import { categoryProps } from '../../categoryTypes'
+import { categoryPropsBody } from "../../categoryTypes";
 
 export class CreateCategory {
-    private categoryRepo: CategoryRepo;
+  private categoryRepo: CategoryRepo;
 
-    constructor(categoryRepo: CategoryRepo) {
-        this.categoryRepo = categoryRepo
-    }
+  constructor(categoryRepo: CategoryRepo) {
+    this.categoryRepo = categoryRepo;
+  }
 
-    public async execute(props: categoryProps) {
-        return await this.categoryRepo.create(props);
-    }
+  public async createCategories(bodyProps: categoryPropsBody) {
+    const category = {
+      name: bodyProps.name,
+      description: bodyProps.description,
+    };
+    return await this.categoryRepo.createCategories(category);
+  }
 }
