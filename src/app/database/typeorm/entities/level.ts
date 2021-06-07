@@ -7,7 +7,7 @@ import {
     OneToMany,
     BaseEntity,
   } from "typeorm";
-  import { Progresse } from "./progresse";
+  import { Progresse } from "./progress";
   
   @Entity()
   export class Level extends BaseEntity {

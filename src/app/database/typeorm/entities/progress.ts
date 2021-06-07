@@ -12,7 +12,7 @@ import {
   import { Level } from "./level";
   
   @Entity()
-  export class Progresse extends BaseEntity {
+  export class Progress extends BaseEntity {
     @PrimaryColumn()
     skillId: number;
   

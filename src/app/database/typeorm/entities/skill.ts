@@ -10,7 +10,7 @@ import {
     BaseEntity,
   } from "typeorm";
   import { Category } from "./category";
-  import { Progresse } from "./progresse";
+  import { Progresse } from "./progress";
   
   @Entity()
   export class Skill extends BaseEntity {
