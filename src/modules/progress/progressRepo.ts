@@ -6,7 +6,7 @@ export class ProgressRepo {
     }
   
     public async createProgress(userId: any, skillId: any) {
-      const ProgressEntity = this.entities.Progresse;
+      const ProgressEntity = this.entities.Progress;
       const UserEntity = this.entities.User;
       const SkillEntity = this.entities.Skill;
       const LevelEntity = this.entities.Level;
@@ -28,8 +28,8 @@ export class ProgressRepo {
       return progress;
     }
   
-    public async getProgresse() {
-      const ProgressEntity = this.entities.Progresse;
+    public async getProgress() {
+      const ProgressEntity = this.entities.Progress;
   
       const findProgress = await ProgressEntity.find({
         relations: ["user", "level", "skill"],
@@ -38,23 +38,23 @@ export class ProgressRepo {
     }
   
     public async getProgresseById(id: any) {
-      const ProgressEntity = this.entities.Progresse;
-      const findProgresseById = await ProgressEntity.find({ where: { id } });
-      return findProgresseById;
+      const ProgressEntity = this.entities.Progress;
+      const findProgressById = await ProgressEntity.find({ where: { id } });
+      return findProgressById;
     }
   
-    public async editProgresse(data: any, id: any) {
-      const ProgressEntity = this.entities.Progresse;
-      const checkProgresse = await ProgressEntity.findOne({ where: { id } });
-      if (checkProgresse) {
-        const result = await ProgressEntity.merge(checkProgresse, data).save();
+    public async editProgress(data: any, id: any) {
+      const ProgressEntity = this.entities.Progress;
+      const checkProgress = await ProgressEntity.findOne({ where: { id } });
+      if (checkProgress) {
+        const result = await ProgressEntity.merge(checkProgress, data).save();
         return result;
       }
     }
     public async deleteProgresse(id: any) {
-      const ProgressEntity = this.entities.Progresse;
-      const deleteProgresse = await ProgressEntity.delete(id);
-      return deleteProgresse;
+      const ProgressEntity = this.entities.Progress;
+      const deleteProgress = await ProgressEntity.delete(id);
+      return deleteProgress;
     }
   }
   
