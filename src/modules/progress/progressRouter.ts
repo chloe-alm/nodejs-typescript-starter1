@@ -1,16 +1,9 @@
-
-import { Router } from "express";
-import { createProgressController } from "./useCases/createProgress";
-import { getProgressController } from "./useCases/getProgess";
+import { Router } from 'express'
+import { createProgressController } from './useCases/createProgress/'
 
 const progressRouter: Router = Router();
 
-progressRouter.post("/", (request, response) => {
-  createProgressController.execute(request, response);
-});
+///api/v1/skills/
+progressRouter.post('/', (req, res) => createProgressController.execute(req, res))
 
-progressRouter.get("/", (request, response) => {
-  getProgressController.execute(request, response);
-});
-
-export { progressRouter };
+export { progressRouter }

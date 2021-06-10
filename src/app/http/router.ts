@@ -1,18 +1,23 @@
-import { Router, Request, Response } from 'express'
-import { categoryRouter } from '../../modules/category/categoryRouter';
-import { skillRouter } from '../../modules/skill/skillRouter';
-import { userRouter } from '../../modules/user/userRouter';
+require("dotenv").config();
+import { Router, Request, Response } from "express";
+import { categoryRouter } from "../../modules/category/categoryRouter";
+import { userRouter } from "../../modules/user/userRouter";
 import { progressRouter } from '../../modules/progress/progressRouter';
+import { skillRouter } from "../../modules/skill/skillRouter";
+import { studentRouter } from "../../modules/student/studentRouter";
+import { levelRouter } from "../../modules/level/levelRouter";
 
-const v1Router: Router = Router()
+const v1Router: Router = Router();
 
-v1Router.get('/', (_: Request, response: Response) => {
-    response.json({ message: 'Hello world !' });
+v1Router.get("/", (_: Request, response: Response) => {
+  response.status(200).json({ message: "Hello world !" });
 });
-v1Router.use("/skill",skillRouter);
+
 v1Router.use("/categories", categoryRouter);
 v1Router.use("/users", userRouter);
+v1Router.use("/skills", skillRouter);
+v1Router.use("/students", studentRouter);
+v1Router.use("/levels", levelRouter);
 v1Router.use("/progresses", progressRouter);
 
-
-export { v1Router }
+export { v1Router };

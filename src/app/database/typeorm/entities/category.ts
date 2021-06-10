@@ -1,28 +1,34 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, CreateDateColumn } from "typeorm";
-import { Skill } from './skill'
+  import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+} from "typeorm";
+import { Skill } from "./skill";
 
 @Entity()
-export class Category extends BaseEntity {
+export class Category {
+  @PrimaryGeneratedColumn("uuid")
+  id: number;
 
-    @PrimaryGeneratedColumn("uuid")
-    id: number;
+  @Column("varchar", {
+    length: 50,
+  })
+  name: string;
 
-    @Column("varchar",{
-        length: 50,
-    })
-    name: string;
+  @Column("varchar", {
+    length: 255,
+  })
+  description: string;
 
-    @Column("varchar",{
-        length: 255,
-    })
-    description: string;
+  @OneToMany(() => Skill, (skill) => skill.category)
+  skills: Skill[];
 
-    @OneToMany(() => Skill, skill => skill.category)
-    skills: Skill[]
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @CreateDateColumn()
-    createAt: Date;
-
-    @CreateDateColumn()
-    updateAt:Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -1,4 +1,4 @@
-import { CategoryPropsBody, CategoryParams } from './categoryTypes'
+import { categoryPropsBody, CategoryParams } from './categoryTypes'
 
 export class CategoryRepo {
     private entities: any
@@ -8,7 +8,7 @@ export class CategoryRepo {
         this.entities = entities
     }
     //je viens chercher mes données et je veux le nom et description de ma categorie, vient prendre le model (entite) le nom et description, ne pas zape .save pour rendre ds la bd
-    public async createCategories(data: CategoryPropsBody) {
+    public async createCategories(data: categoryPropsBody) {
         const CategoryEntity = this.entities.Category;
         const { name, description } = data;
         const category = await CategoryEntity.create({ name, description }).save();
@@ -27,7 +27,7 @@ export class CategoryRepo {
         return category;
       }
     
-      public async editCategory(data: CategoryPropsBody, id: CategoryParams) {
+      public async editCategory(data: categoryPropsBody, id: CategoryParams) {
         const CategoryEntity = this.entities.Category;
         const categoryId = await CategoryEntity.findOne({ where: { id: id } });
         console.log("get ID *****", categoryId);

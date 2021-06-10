@@ -1,5 +1,5 @@
 
-import { __prod__, DB_HOST, DB_DIALECT, DB_DATABASE, DB_USERNAME, DB_PASSWORD } from '../../constant'
+import { __prod__, DB_HOST, DB_DIALECT, DB_DATABASE, DB_USERNAME, DB_PASSWORD } from '../../../constant'
 
 const databaseCredentials = {
     development: {
@@ -8,7 +8,7 @@ const databaseCredentials = {
         host: DB_HOST,
         username: DB_USERNAME,
         password: DB_PASSWORD,
-        logging: !__prod__,
+        logging: true,
         synchronize: true,
         entities: [] as any[]
     },

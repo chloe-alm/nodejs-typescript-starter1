@@ -1,42 +1,19 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    JoinColumn,
-    ManyToOne,
-    OneToMany,
-    BaseEntity,
-  } from "typeorm";
-  import { Category } from "./category";
-  import { Progresse } from "./progress";
-  
-  @Entity()
-  export class Skill extends BaseEntity {
-    @PrimaryGeneratedColumn("uuid")
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, BaseEntity } from "typeorm";
+import { Category } from './category'
+import { Progress } from './progress'
+
+@Entity()
+export class Skill extends BaseEntity {
+
+    @PrimaryGeneratedColumn()
     id: number;
-  
-    @Column("varchar", {
-      length: 50,
-    })
+
+    @Column()
     name: string;
-  
-    @Column("varchar", {
-      length: 255,
-    })
-    description: string;
-  
-    @ManyToOne(() => Category, (category) => category.skills)
-    @JoinColumn({ name: "categoryId" })
-    category: Category;
-  
-    @OneToMany(() => Progresse, (progresse) => progresse.skill)
-    progresses: Progresse[];
-  
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
+
+    @ManyToOne(() => Category, category => category.skills)
+    category: Category
+
+    @OneToMany(() => Progress, progress => progress.skill)
+    progresses: Progress[]
 }

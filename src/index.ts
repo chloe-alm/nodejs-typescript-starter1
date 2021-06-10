@@ -1,3 +1,10 @@
 import{ createServer } from './app/http/app'
 
-createServer();
+import { createConnection } from 'typeorm'
+
+import { typeORMConfig } from './app/database/typeorm';
+
+createConnection(typeORMConfig).then(_ => {
+    createServer();
+})
+

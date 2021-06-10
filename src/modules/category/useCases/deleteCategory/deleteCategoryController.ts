@@ -12,6 +12,7 @@ export class DeleteCategoryController {
 
   public async execute(request: Request, response: Response) {
     const { id } = request.params;
+    console.log(id)
     const deleteCategory = await this.useCase.deleteCategory(id);
     console.log("Deleter Category COntroller", deleteCategory);
     response.status(200).json(deleteCategory);

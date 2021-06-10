@@ -1,36 +1,18 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToMany,
-    BaseEntity,
-  } from "typeorm";
-  import { Progresse } from "./progress";
-  
-  @Entity()
-  export class Level extends BaseEntity {
-    @PrimaryGeneratedColumn("uuid")
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
+import { Progress } from './progress'
+
+@Entity()
+export class Level extends BaseEntity {
+
+    @PrimaryGeneratedColumn()
     id: number;
-  
-    @Column({
-      type: "int",
-      width: 3,
-    })
+
+    @Column()
     number: number;
-  
-    @Column("varchar", {
-      length: 50,
-    })
+
+    @Column()
     name: string;
-  
-    @OneToMany(() => Progresse, (progresse) => progresse.level)
-    progresses: Progresse[];
-  
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
-  }
+
+    @OneToMany(() => Progress, progress => progress.level)
+    progresses: Progress[]
+}
